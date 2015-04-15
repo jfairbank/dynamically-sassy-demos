@@ -1,0 +1,12 @@
+#foo {
+  background: nth($palette, 1);
+  color: nth($palette, 2);
+}
+
+#bar {
+  background: nth($palette, 3);
+}
+
+//body {
+  //background: nth($palette, 3);
+//}
