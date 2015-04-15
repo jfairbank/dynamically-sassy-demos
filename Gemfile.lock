@@ -146,7 +146,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sqlite3 (1.3.10)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
@@ -173,7 +172,6 @@ PLATFORMS
 DEPENDENCIES
   byebug
   chroma
-  coffee-rails (~> 4.1.0)
   haml-rails (~> 0.9)
   jbuilder (~> 2.0)
   jquery-rails
@@ -183,7 +181,6 @@ DEPENDENCIES
   spring
   sprockets (~> 3.0.0.beta)
   sprockets-es6
-  sqlite3
   thin
   turbolinks
   uglifier (>= 1.3.0)
