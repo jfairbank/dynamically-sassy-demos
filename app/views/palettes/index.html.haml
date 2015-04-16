@@ -41,12 +41,13 @@
 %button#submit Submit
 
 :javascript
-  $(function() {
+  document.addEventListener('DOMContentLoaded', function() {
     var URL = '/palettes/custom_palette.css';
     var paletteLink = null;
+    var $ = document.querySelector.bind(document);
 
     function getColor() {
-      return $('#custom-color').val().trim();
+      return $('#custom-color').value.trim();
     }
 
     function setStylesheet() {
@@ -56,7 +57,7 @@
         return;
       }
 
-      var url = URL + 'custom_color=' + encodeURIComponent(color);
+      var url = URL + '?custom_color=' + encodeURIComponent(color);
       var link = document.createElement('link');
 
       link.setAttribute('rel', 'stylesheet');
@@ -71,9 +72,9 @@
       document.head.appendChild(link);
     }
 
-    $('#submit').on('click', setStylesheet);
+    $('#submit').addEventListener('click', setStylesheet);
 
-    $('#custom-color').on('keyup', function(e) {
+    $('#custom-color').addEventListener('keyup', function(e) {
       if (e.keyCode === 13) {
         setStylesheet();
       }
