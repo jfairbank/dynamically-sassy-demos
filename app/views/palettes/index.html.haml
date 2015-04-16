@@ -1,3 +1,35 @@
+:css
+  body {
+    background: #333;
+    margin: 100px auto 0;
+    width: 800px;
+  }
+
+  #foo {
+    font-family: Arial;
+    font-size: 40px;
+    margin-bottom: 50px;
+    padding: 10px;
+    transition-duration: 500ms;
+    transition-property: background, color;
+  }
+
+  #bar {
+    height: 100px;
+    margin-bottom: 50px;
+    width: 100px;
+  }
+
+  #custom-color {
+    font-size: 28px;
+    padding: 6px;
+  }
+
+  #submit {
+    font-size: 24px;
+    padding: 12px;
+  }
+
 #foo
   Hello World
 
@@ -7,3 +39,43 @@
 %br
 %br
 %button#submit Submit
+
+:javascript
+  $(function() {
+    var URL = '/palettes/custom_palette.css';
+    var paletteLink = null;
+
+    function getColor() {
+      return $('#custom-color').val().trim();
+    }
+
+    function setStylesheet() {
+      var color = getColor();
+
+      if (!color) {
+        return;
+      }
+
+      var url = URL + 'custom_color=' + encodeURIComponent(color);
+      var link = document.createElement('link');
+
+      link.setAttribute('rel', 'stylesheet');
+      link.setAttribute('media', 'all');
+      link.setAttribute('href', url);
+
+      if (paletteLink) {
+        paletteLink.remove();
+      }
+
+      paletteLink = link;
+      document.head.appendChild(link);
+    }
+
+    $('#submit').on('click', setStylesheet);
+
+    $('#custom-color').on('keyup', function(e) {
+      if (e.keyCode === 13) {
+        setStylesheet();
+      }
+    })
+  });
