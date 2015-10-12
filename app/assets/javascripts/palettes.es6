@@ -1,6 +1,6 @@
 (() => {
   const $ = document.querySelector.bind(document);
-  const URL = '/palettes/custom_palette.css';
+  const URL = '/palettes/custom.css';
   let paletteLink = null;
 
   function getColor() {
@@ -14,7 +14,7 @@
       return;
     }
 
-    const url = `${URL}?custom_color=${encodeURIComponent(color)}`;
+    const url = `${URL}?color=${encodeURIComponent(color)}`;
     const link = document.createElement('link');
 
     link.setAttribute('rel', 'stylesheet');
