@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+ruby '2.2.2'
 
 gem 'rails', '4.2.1'
 gem 'sass-rails', '~> 5.0'
@@ -17,7 +17,7 @@ group :development, :test do
 end
 
 gem 'haml-rails', '~> 0.9'
-gem 'sprockets', '~> 3.0.0.beta'
+gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 gem 'chroma'
 gem 'puma'

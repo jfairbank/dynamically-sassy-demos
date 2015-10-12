@@ -1,84 +1,22 @@
-:css
-  body {
-    background: #333;
-    box-sizing: content-box;
-    margin: 100px auto 0;
-    padding: 0 10px;
-    width: 600px;
-  }
+- content_for :head do
+  = stylesheet_link_tag 'palettes'
 
-  #foo {
-    font-family: Arial;
-    font-size: 40px;
-    margin-bottom: 50px;
-    padding: 10px;
-    transition-duration: 500ms;
-    transition-property: background, color;
-  }
+- content_for :script_bottom do
+  = javascript_include_tag 'palettes'
 
-  #bar {
-    height: 100px;
-    margin-bottom: 50px;
-    width: 100px;
-  }
-
-  #custom-color {
-    font-size: 28px;
-    padding: 6px;
-  }
-
-  #submit {
-    font-size: 24px;
-    padding: 12px;
-  }
-
-#foo
+.greeting
   Hello World
 
-#bar
+.swatch
 
+%label.palette-selector-label Palette:
+%select#palette-selector.palette-selector
+  - 3.times do |n|
+    %option.palette-option{value: n + 1} Palette #{n + 1}
+
+%br
+%br
 %input#custom-color{placeholder: 'Custom color...'}
 %br
 %br
-%button#submit Submit
-
-:javascript
-  document.addEventListener('DOMContentLoaded', function() {
-    var URL = '/palettes/custom_palette.css';
-    var paletteLink = null;
-    var $ = document.querySelector.bind(document);
-
-    function getColor() {
-      return $('#custom-color').value.trim();
-    }
-
-    function setStylesheet() {
-      var color = getColor();
-
-      if (!color) {
-        return;
-      }
-
-      var url = URL + '?custom_color=' + encodeURIComponent(color);
-      var link = document.createElement('link');
-
-      link.setAttribute('rel', 'stylesheet');
-      link.setAttribute('media', 'all');
-      link.setAttribute('href', url);
-
-      if (paletteLink) {
-        paletteLink.remove();
-      }
-
-      paletteLink = link;
-      document.head.appendChild(link);
-    }
-
-    $('#submit').addEventListener('click', setStylesheet);
-
-    $('#custom-color').addEventListener('keyup', function(e) {
-      if (e.keyCode === 13) {
-        setStylesheet();
-      }
-    })
-  });
+%button#submit.submit-button Submit

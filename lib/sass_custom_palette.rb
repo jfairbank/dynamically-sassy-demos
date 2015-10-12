@@ -1,7 +1,7 @@
 class SassCustomPalette
   TEMPLATE = <<-EOS.freeze
-    $palette: get-custom-palette();
-    @import 'my-ui';
+    $palettes: get-custom-palettes();
+    @import 'ui';
   EOS
 
   def initialize(color)

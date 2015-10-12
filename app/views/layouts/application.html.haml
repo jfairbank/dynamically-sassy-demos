@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+    %meta{charset: 'UTF-8'}
+    %title Demo
+    = csrf_meta_tags
+    = yield :head
+
+%body.palette-1
+  = yield
+  = yield :script_bottom

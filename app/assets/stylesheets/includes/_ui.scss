@@ -1,0 +1,14 @@
+@for $i from 1 through 3 {
+  $palette: nth($palettes, $i);
+
+  body.palette-#{$i} {
+    .greeting {
+      background: map-get($palette, bg);
+      color: map-get($palette, text);
+    }
+
+    .swatch {
+      background: map-get($palette, original);
+    }
+  }
+}
